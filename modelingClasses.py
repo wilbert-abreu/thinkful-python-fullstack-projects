@@ -40,16 +40,16 @@ class Band(Musician):
         super().__init__(["Twang", "splang", "Boom"])
 
     def hireMusician(self):
-        pass
+        print("You are hired!")
 
     def fireMusician(self):
-        pass
+        print("You are fired!")
+
 
     def playSolos(self):
-        self.Drummer.countToFour()
+        drummer = Drummer()
+        drummer.countToFour()
         self.solo(6)
-
-
 
 # Bands should be able to hire and fire musicians, and have the musicians play their solos after the drummer has counted time.
 
@@ -61,9 +61,9 @@ if __name__ == '__main__':
     # nigel = Guitarist()
     # nigel.solo(7)
     # print(nigel.sounds)
-    nigel = Drummer()
-    nigel.spontaneouslyCombust()
-    nigel.solo(6)
-
+    nigel = Band()
+    nigel.hireMusician()
+    nigel.playSolos()
+    nigel.fireMusician()
 
 
