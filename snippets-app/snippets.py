@@ -34,7 +34,7 @@ def put(name, snippet):
         cursor.execute(command, (snippet, name))
     connection.commit()
 """
-     with connection, connection.cursor() as cursor:
+    with connection, connection.cursor() as cursor:
         command = "insert into snippets values (%s, %s)"
         cursor.execute(command, (name, snippet))
 
@@ -58,21 +58,54 @@ def get(name):
         message = cursor.fetchone()
     logging.info("Retrieving snippet {!r}".format(name))
 
-"""old code
-    # cursors allow you to run SQL commands in the postgress session
-    cursor = connection.cursor()
-    #save sql statement
-    command = "select message FROM snippets WHERE keyword= %s"
-    cursor.execute(command, (name,))
-    # fetchone() returns a tuple of values for each field.
-    message = cursor.fetchone()
-"""
+    """old code
+        # cursors allow you to run SQL commands in the postgress session
+        cursor = connection.cursor()
+        #save sql statement
+        command = "select message FROM snippets WHERE keyword= %s"
+        cursor.execute(command, (name,))
+        # fetchone() returns a tuple of values for each field.
+        message = cursor.fetchone()
+    """
 
-
-    logging.debug("Snippet Retrieved successfully")
     if not message:
-        message = input("Snippet not found, please input another")#no snippet was found with that name
+        name = input("Snippet not found, please input another: ")#no snippet was found with that name
+        with connection, connection.cursor() as cursor:
+            command = "select message FROM snippets WHERE keyword= %s"
+            cursor.execute(command, (name,))
+            message = cursor.fetchone()
+    logging.debug("Snippet Retrieved successfully")
+
     return message
+
+def catalog():
+    logging.info("Retrieving catalog")
+
+    with connection, connection.cursor() as cursor:
+        command = "select keyword FROM snippets order by keyword"
+        cursor.execute(command)
+        catalog = cursor.fetchall()
+    logging.debug("Retrieved catalog successfully")
+
+    return catalog
+
+def search(query):
+    logging.info("Searching snippets")
+
+    with connection, connection.cursor() as cursor:
+        command = "select * from snippets where keyword like '%%'||%s||'%%' OR message like '%%'||%s||'%%'"
+        cursor.execute(command, (query,query))
+        search_result = cursor.fetchall()
+    if not search_result:
+        next_query = input("Nothing to see here..Please enter another search query: ")
+        with connection, connection.cursor() as cursor:
+            command = "select * from snippets where keyword like '%%'||%s||'%%' OR message like '%%'||%s||'%%'"
+            cursor.execute(command, (next_query,next_query))
+            search_result = cursor.fetchall()
+
+    logging.debug("Retrieved search result")
+
+    return search_result
 
 def main():
     """Main Function"""
@@ -91,6 +124,13 @@ def main():
     get_parser = subparsers.add_parser("get", help="Retrieve a snippet")
     get_parser.add_argument("name", help="The name of the snippet")
 
+    logging.debug("Constructing catalog subparser")
+    catalog_parser = subparsers.add_parser("catalog", help="Retrieve the catalog")
+
+    logging.debug("Constructing search subparser")
+    search_parser = subparsers.add_parser("search", help="Retrieve the catalog")
+    search_parser.add_argument("query", help="Search query")
+
     arguments = parser.parse_args(sys.argv[1:])
 
     #convert parsed arguments from Namespace to dictionary
@@ -101,6 +141,12 @@ def main():
         name, snippet = put(**arguments)
         # **arguments is the same as put(name="list", snippet="A sequence of things - created using []")
         print("Stored {!r} as {!r}".format(snippet,name))
+    elif command == "catalog":
+        full_catalog = catalog()
+        print("Retrieved catalog: {!r}".format(full_catalog))
+    elif command == "search":
+        search_request = search(**arguments)
+        print("Retrieved snippet: {!r}".format(search_request))
     elif command == "get":
         snippet = get(**arguments)
         print("Retrieved snippet: {!r}".format(snippet))
