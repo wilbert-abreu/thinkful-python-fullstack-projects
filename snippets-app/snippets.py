@@ -4,19 +4,43 @@
 import logging
 import argparse
 import sys
+import psycopg2
 
 #set the log output file, and the log level
 logging.basicConfig(filename="snippets.log", level=logging.DEBUG)
+logging.debug("Connecting to PostgreSQL")
+connection = psycopg2.connect(database="snippets")
+logging.debug("Database connection established")
+
 
 def put(name, snippet):
 
-    """
-    Store a snippet with an associated name.
-
-    Returns the name and the snippet
-    """
+    """Store a snippet with an associated name."""
     #will report the log, FIXME identifies the problem both in the source and the log, !r modifer means that the repr() funtions runs, the repr() function returns a string containing printable version of the object
-    logging.error("FIXME: Unimplemented - put({!r}, {!r})".format(name, snippet))
+    # logging.error("FIXME: Unimplemented - put({!r}, {!r})".format(name, snippet))
+    logging.info("Storing snippet {!r}: {!r}".format(name, snippet))
+    # cursors allow you to run SQL commands in the postgress session
+    cursor = connection.cursor()
+
+    """old code
+    #save sql statement
+    try:
+        command = "insert into snippets values (%s, %s)"
+        cursor.execute(command, (name, snippet))
+    except:
+        #connection.rollback() undue, gets database to original state
+        connection.rollback()
+        command = "update snippets set message=%s where keyword=%s)"
+        cursor.execute(command, (snippet, name))
+    connection.commit()
+"""
+     with connection, connection.cursor() as cursor:
+        command = "insert into snippets values (%s, %s)"
+        cursor.execute(command, (name, snippet))
+
+    # save changes to the database
+
+    logging.debug("Snippet stored successfully")
     return name,snippet
 
 def get(name):
@@ -27,10 +51,28 @@ def get(name):
 
     Returns the snippet.
     """
-    logging.error("FIXME: Unimplemented - get({!r})".format(name))
+    # logging.error("FIXME: Unimplemented - get({!r})".format(name))
+    with connection, connection.cursor() as cursor:
+        command = "select message FROM snippets WHERE keyword= %s"
+        cursor.execute(command, (name,))
+        message = cursor.fetchone()
+    logging.info("Retrieving snippet {!r}".format(name))
 
-    return ""
+"""old code
+    # cursors allow you to run SQL commands in the postgress session
+    cursor = connection.cursor()
+    #save sql statement
+    command = "select message FROM snippets WHERE keyword= %s"
+    cursor.execute(command, (name,))
+    # fetchone() returns a tuple of values for each field.
+    message = cursor.fetchone()
+"""
 
+
+    logging.debug("Snippet Retrieved successfully")
+    if not message:
+        message = input("Snippet not found, please input another")#no snippet was found with that name
+    return message
 
 def main():
     """Main Function"""
@@ -62,6 +104,8 @@ def main():
     elif command == "get":
         snippet = get(**arguments)
         print("Retrieved snippet: {!r}".format(snippet))
+
+
 
 
 
