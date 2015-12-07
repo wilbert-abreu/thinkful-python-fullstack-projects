@@ -6,6 +6,8 @@ import mistune as md
 def markdown(text):
     return Markup(md.markdown(text,escape=True))
 
+
+# @app.template_filter(): decorator that allows you to add custom filters to
 @app.template_filter()
 def dateformat(date, format):
     if not date:

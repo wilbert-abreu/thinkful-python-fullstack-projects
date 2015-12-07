@@ -43,3 +43,25 @@ def entries(page=1):
         page=page,
         total_pages=total_pages
     )
+
+# This specifies that the route will only be used for GET requests to the page
+# I will have to add a new view for the POST request which takes place when you submit the form
+@app.route("/entry/add", methods=["GET"])
+def add_entry_get():
+    return render_template("add_entry.html")
+
+#takes the form data and creates a new blog entry
+from flask import request, redirect, url_for
+
+#similar to add_entry_get but only accepts posts
+@app.route("/entry/add", methods=["POST"])
+def add_entry_post():
+    entry = Entry(
+                  # request.form dictionary allows you to use the data submitted in the from
+            title=request.form["title"],
+            content=request.form["content"],
+        )
+    session.add(entry)
+    session.commit()
+    return redirect(url_for("entries"))
+
