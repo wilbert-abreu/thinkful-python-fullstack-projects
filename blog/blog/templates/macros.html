@@ -1,0 +1,17 @@
+{% macro render_entry(entry) %}
+<div>
+  <div>
+    <ul>
+      <li>
+      {{entry.datetime | dateformat("%d/%m/%y") }}
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h1>
+      {{enrty.title}}
+    </h1>
+    {{ entry.content | markdown }}
+  </div>
+</div>
+{% endmacro %}

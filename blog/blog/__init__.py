@@ -1,6 +1,8 @@
 import os
-
+# from config import DevelopmentConfig
 from flask import Flask
+
+
 
 app = Flask(__name__)
 config_path = "blog.config.DevelopmentConfig"
