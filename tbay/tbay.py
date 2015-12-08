@@ -30,7 +30,7 @@ class User(Base):
 
 class bid(Base):
     __tablename__ = "bids"
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_k/ey=True)
     price = Column(Float)
 
 #creates a new table for each subclass of Base, ignoring any tables which already existi

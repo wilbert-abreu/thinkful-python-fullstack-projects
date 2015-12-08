@@ -72,3 +72,16 @@ def view_post(id):
     return render_template("single_entry.html",
         entry=entry
     )
+
+@app.route("/entry/<int:id>/edit", methods=["GET"])
+def edit_entry_get(id):
+    entry = session.query(Entry).filter_by(id=id).first()
+    return render_template("edit_entry.html", entry=entry)
+
+@app.route("/entry/<int:id>/edit", methods=["POST"])
+def edit_entry_post(id):
+    entry = session.query(Entry).filter_by(id=id).first()
+    entry.title = request.form["title"]
+    entry.content = request.form["content"]
+    session.commit()
+    return redirect(url_for("entries"))
