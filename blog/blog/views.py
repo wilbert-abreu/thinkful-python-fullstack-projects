@@ -10,24 +10,24 @@ def entries():
     entries = entries.all()
     return render_template("entries.html", entries=entries)
 """
-PAGINATE_BY = 10
-
+# PAGINATE_BY = 10
 @app.route("/")
+# @app.route("/?limit=<int:paginate_by>")
 @app.route("/page/<int:page>")
-def entries(page=1):
-    # Zero-indexed page
-    # 4
+def entries(page=1, limit=10):
+
+    paginate_by = int(request.args.get('limit', limit))
+
     page_index = page - 1
-    #3
 
     count = session.query(Entry).count()
-    #26
-    start = page_index * PAGINATE_BY
 
-    end = start + PAGINATE_BY
+    start = page_index * paginate_by
 
-    total_pages = (count - 1) / PAGINATE_BY + 1
-    #25/11 2.27
+    end = start + paginate_by
+
+    total_pages = (count - 1) / paginate_by + 1
+
     has_next = page_index < total_pages - 1
 
     has_prev = page_index > 0
@@ -37,6 +37,7 @@ def entries(page=1):
     entries = entries[start:end]
 
     return render_template("entries.html",
+        paginate_by=paginate_by,
         entries=entries,
         has_next=has_next,
         has_prev=has_prev,
@@ -72,7 +73,7 @@ def view_post(id):
     return render_template("single_entry.html",
         entry=entry
     )
-
+# edit
 @app.route("/entry/<int:id>/edit", methods=["GET"])
 def edit_entry_get(id):
     entry = session.query(Entry).filter_by(id=id).first()
@@ -85,7 +86,7 @@ def edit_entry_post(id):
     entry.content = request.form["content"]
     session.commit()
     return redirect(url_for("entries"))
-
+# delete
 @app.route("/entry/<int:id>/delete", methods=["GET"])
 def delete_entry_get(id):
     entry = session.query(Entry).filter_by(id=id).first()
@@ -99,4 +100,3 @@ def delete_entry_post(id):
     session.delete(entry)
     session.commit()
     return redirect(url_for("entries"))
-
