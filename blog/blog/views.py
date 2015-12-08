@@ -68,7 +68,7 @@ def add_entry_post():
 # view single post
 @app.route("/entry/<int:id>")
 def view_post(id):
-    entry = session.query(Entry).filter_by(id=id)
+    entry = session.query(Entry).filter_by(id=id).first()
     return render_template("single_entry.html",
         entry=entry
     )
