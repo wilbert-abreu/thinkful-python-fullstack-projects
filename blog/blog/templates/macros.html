@@ -9,9 +9,22 @@
     </div>
     <div class="col-md-10">
         <h1>
+          <a href="{{url_for('view_post', id=entry.id)}}">
             {{ entry.title }}
+          </a>
         </h1>
         {{ entry.content | markdown }}
     </div>
+</div>
+{% endmacro %}
+
+
+<!-- macro to render a single post -->
+{% macro render_single_post(entry) %}
+<div class="col-md-10">
+    <h1>
+        <a href="{{url_for('view_post', id=entry.id)}}">{{entry.title}}</a>
+    </h1>
+    {{entry.content|safe}}
 </div>
 {% endmacro %}
