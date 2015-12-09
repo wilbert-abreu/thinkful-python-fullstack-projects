@@ -38,9 +38,21 @@
                 </div>
             </div>
         </div>
+        <!-- check if there is a user auth error -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">
+                  {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <!-- END - check if there is a user auth error -->
 
         <div class="container">
             {% block content %}{% endblock %}
         </div>
+
     </body>
 </html>
