@@ -19,6 +19,11 @@
             {{ entry.title }}
           </a>
         </h1>
+        {% if entry.author.name %}
+          by: {{ entry.author.name }}
+        {% else %}
+          by: Anonymous
+        {% endif %}
         {{ entry.content | markdown }}
     </div>
 </div>

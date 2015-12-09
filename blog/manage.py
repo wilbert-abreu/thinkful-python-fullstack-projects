@@ -54,6 +54,22 @@ def adduser():
     session.commit()
 
 
+#add migration command
+from flask.ext.migrate import Migrate, MigrateCommand
+from blog.database import Base
+
+#holds the metadata object
+# Alembic(migration tool) uses the metadata to work out the changes to the database schema
+class DB(object):
+    def __init__(self, metadata):
+        self.metadata = metadata
+#create instance of Flask's migrate class
+#pass in app and instance of Db class
+migrate = Migrate(app, DB(Base.metadata))
+#add migrate commands to the manager
+manager.add_command('db', MigrateCommand)
+
+
 if __name__ == "__main__":
     manager.run()
 

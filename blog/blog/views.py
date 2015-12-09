@@ -58,6 +58,8 @@ def add_entry_get():
 #takes the form data and creates a new blog entry
 from flask import request, redirect, url_for
 
+from flask.ext.login import current_user
+
 #similar to add_entry_get but only accepts posts
 @app.route("/add", methods=["POST"])
 @app.route("/entry/add", methods=["POST"])
@@ -67,6 +69,7 @@ def add_entry_post():
                   # request.form dictionary allows you to use the data submitted in the from
             title=request.form["title"],
             content=request.form["content"],
+            author=current_user
         )
     session.add(entry)
     session.commit()
