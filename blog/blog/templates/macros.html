@@ -1,16 +1,19 @@
-{% macro render_entry(entry) %}
+{% macro render_entry(entry,current_user) %}
 <div class="row">
     <div class="col-md-2 text-right metadata">
         <ul class="list-unstyled">
             <li>
                 {{ entry.datetime | dateformat("%d/%m/%y") }}
             </li>
+            {% if current_user.name == entry.author.name and current_user.is_authenticated %}
+
             <li>
                <a href="{{url_for('edit_entry_get', id=entry.id)}}">Edit</a>
             </li>
             <li>
                <a href="{{url_for('delete_entry_get', id=entry.id)}}">Delete</a>
             </li>
+            {% endif %}
         </ul>
     </div>
     <div class="col-md-10">

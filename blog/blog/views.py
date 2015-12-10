@@ -134,5 +134,13 @@ def login_post():
         flash("Incorrect username or password", "danger")
         return redirect(url_for("login_get"))
 
-    login_user(user)
+    login_user(user,remember=True)
     return redirect(request.args.get('next') or url_for("entries"))
+
+from flask.ext.login import logout_user
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for("entries"))
+
