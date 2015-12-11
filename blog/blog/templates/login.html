@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<h1>Login</h1>
 <form role="form" method="POST">
     <div class="form-group">
         <label for="email">Email address</label>
@@ -9,6 +10,7 @@
         <label for="password">Password</label>
         <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-success" href="{{url_for('create_account_get')}}">Create an account</a>
 </form>
 {% endblock %}

@@ -144,3 +144,35 @@ def logout():
     logout_user()
     return redirect(url_for("entries"))
 
+from werkzeug.security import generate_password_hash
+
+@app.route("/create-account", methods=["GET"])
+def create_account_get():
+    return render_template("create_account.html")
+
+@app.route("/create-account", methods=["POST"])
+def create_account_post():
+    name = request.form["name"]
+    email = request.form["email"]
+    password = request.form["password"]
+    confirm_password = request.form["confirm_password"]
+
+    if session.query(User).filter_by(email=email).first():
+        flash("The is already a registered user with that email", "danger")
+        return redirect(url_for("create_account_get"))
+
+    while len(password) < 8:
+        flash("Please make the password at least 8 characters long", "danger")
+        return redirect(url_for("create_account_get"))
+
+    while password != confirm_password:
+        flash("Passwords do not match", "danger")
+        return redirect(url_for("create_account_get"))
+
+    user = User(name=name, email=email,
+                password=generate_password_hash(password))
+    session.add(user)
+    session.commit()
+
+    login_user(user,remember=True)
+    return redirect(url_for("entries"))
