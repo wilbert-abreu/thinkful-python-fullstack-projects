@@ -2,14 +2,14 @@ from blog import app
 from flask import Markup
 import mistune as md
 
+
 @app.template_filter()
 def markdown(text):
-    return Markup(md.markdown(text,escape=True))
 
+    return Markup(md.markdown(text, escape=True))
 
-# @app.template_filter(): decorator that allows you to add custom filters to
 @app.template_filter()
-def dateformat(date, format):
+def date_format(date, format):
     if not date:
         return None
     return date.strftime(format)
