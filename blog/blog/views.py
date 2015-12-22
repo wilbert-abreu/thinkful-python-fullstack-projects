@@ -21,8 +21,10 @@ def entries(page=1, limit=10):
     posts = posts.order_by(Entry.datetime.desc())
     posts = posts[start:end]
 
-    return render_template("entries.html", paginate_by=paginate_by, entries=posts, has_next=has_next,
-                           has_prev=has_prev, page=page, total_pages=total_pages)
+    return render_template("entries.html", paginate_by=paginate_by,
+                           entries=posts, has_next=has_next,
+                           has_prev=has_prev, page=page,
+                           total_pages=total_pages)
 
 
 @app.route("/add", methods=["GET"])
@@ -36,7 +38,8 @@ def add_entry_get():
 @app.route("/entry/add", methods=["POST"])
 @login_required
 def add_entry_post():
-    entry = Entry(title=request.form["title"], content=request.form["content"], author=current_user)
+    entry = Entry(title=request.form["title"], content=request.form["content"],
+                  author=current_user)
     session.add(entry)
     session.commit()
     return redirect(url_for("entries"))
@@ -129,8 +132,10 @@ def create_account_post():
         flash("Passwords do not match", "danger")
         return redirect(url_for("create_account_get"))
 
-    user = User(name=name, email=email, password=generate_password_hash(password))
+    user = User(name=name, email=email,
+                password=generate_password_hash(password))
     session.add(user)
     session.commit()
     login_user(user, remember=True)
     return redirect(url_for("entries"))
+
