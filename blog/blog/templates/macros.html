@@ -3,7 +3,7 @@
     <div class="col-md-2 text-right metadata">
         <ul class="list-unstyled">
             <li>
-                {{ entry.datetime | dateformat("%d/%m/%y") }}
+                {{ entry.datetime | date_format("%d/%m/%y") }}
             </li>
             {% if current_user.name == entry.author.name and current_user.is_authenticated %}
 

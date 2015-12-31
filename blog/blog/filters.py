@@ -8,8 +8,9 @@ def markdown(text):
 
     return Markup(md.markdown(text, escape=True))
 
+
 @app.template_filter()
-def date_format(date, format):
+def date_format(date, fmt):
     if not date:
         return None
-    return date.strftime(format)
+    return date.strftime(fmt)

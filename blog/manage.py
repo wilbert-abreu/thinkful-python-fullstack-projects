@@ -1,9 +1,9 @@
-from flask.ext.script import Manager
+from flask_script import Manager
 from blog import app
 from blog.database import session, Entry, User, Base
 from getpass import getpass
 from werkzeug.security import generate_password_hash
-from flask.ext.migrate import Migrate, MigrateCommand
+from flask_migrate import Migrate, MigrateCommand
 
 manager = Manager(app)
 
