@@ -73,24 +73,41 @@ def file_post():
     return Response(json.dumps(data), 201, mimetype="application/json")
 
 
-@app.route("/api/files/<int:id>", methods=["PUT"])
-@decorators.require("multipart/form-data")
+@app.route("/api/songs/<int:id>", methods=["PUT"])
 @decorators.accept("application/json")
-def file_edit(id):
-    file = session.query(models.File).get(id)
-    if not file:
-        message = "Could not find file with id {}".format(id)
+def song_edit(id):
+    song = session.query(models.Song).get(id)
+    if not song:
+        message = "Could not find song with id {}".format(id)
         data = json.dumps({"message": message})
         return Response(data, 404, mimetype="application/json")
     data = request.json
-    try:
-        validate(data, song_schema)
-    except ValidationError as error:
-        data = {"message": error.message}
-        return Response(json.dumps(data), 422, mimetype="application/json")
-    file.filename = data["name"]
+    if "id" not in data:
+        message = "File id not given"
+        data = json.dumps({"message": message})
+        return Response(data, 400, mimetype="application/json")
+    file = session.query(models.File).get(data["id"])
+    if not file:
+        message = "File with id {} does not exist".format(data["id"])
+        data = json.dumps({"message": message})
+        return Response(data, 404, mimetype="application/json")
+    song.file_id = file.id
     session.commit()
-    data = json.dumps(file.as_dictionary())
+    data = json.dumps(song.as_dictionary())
+    return Response(data, 200, mimetype="application/json")
+
+
+@app.route("/api/songs/<int:id>", methods=["DELETE"])
+def song_delete(id):
+    song = session.query(models.Song).get(id)
+    if not song:
+        message = "Could not find song with id {}".format(id)
+        data = json.dumps({"message": message})
+        return Response(data, 404, mimetype="application/json")
+    session.delete(song)
+    session.commit()
+    message = "Song with id {} has been deleted!".format(id)
+    data = json.dumps({"message": message})
     return Response(data, 200, mimetype="application/json")
 
 
