@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>realtime_chat</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+        <!-- CSS -->
+        <!-- Pure -->
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0-rc-1/pure-min.css">
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0-rc-1/grids-responsive-min.css">
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+         <!-- realtime_chat -->
+        <link rel="stylesheet" href="static/css/main.css">
+
+        <!-- Fonts -->
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+        <!-- JS -->
+        <!-- jQuery -->
+        <script src="//code.jquery.com/jquery-2.1.0.js"></script>
+        <!-- Bootstrap -->
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+        <!-- React -->
+        <script src="//fb.me/react-0.13.3.js"></script>
+        <script src="//fb.me/JSXTransformer-0.13.3.js"></script>
+        <script src="//js.pusher.com/3.0/pusher.min.js"></script>
+
+        <!-- realtime_chat -->
+        <script src="/static/js/ui_components/Chat.js" type="text/jsx"></script>
+        <script src="/static/js/ui_components/WelcomeView.js" type="text/jsx"></script>
+
+
+    </head>
+    <body class="blue-gradient-background">
+
+      <div class="jamie-patels-favourite-div"></div>
+      <div class="navbar navbar-inverse navbar-default" role="navigation">
+        <div class="container navbar-container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand">
+              <a href="/"><img class="full-logo" src="#" width="111" height="37"></a>
+              <a href="/"><img class="small-logo" src="#" height="37"></a>
+            </div>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav" id="nav-ul">
+              <li><a class="signup-link" href="http://pusher.com/signup">Create a Free Account</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="app">
+      </div>
+
+    </body>
+</html>
