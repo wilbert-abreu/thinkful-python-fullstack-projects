@@ -1,5 +1,5 @@
 import os
-from (projectname) import app
+from slack_clone import app
 
 def run():
     port = int(os.environ.get('PORT', 8080))

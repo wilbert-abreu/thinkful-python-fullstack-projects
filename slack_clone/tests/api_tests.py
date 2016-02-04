@@ -6,11 +6,11 @@ import sys; print(list(sys.modules.keys()))
 
 
 # Configure our app to use the testing databse
-os.environ["CONFIG_PATH"] = "(projectname).config.TestingConfig"
+os.environ["CONFIG_PATH"] = "slack_clone.config.TestingConfig"
 
-from (projectname) import app
-from (projectname) import models
-from (projectname).database import Base, engine, session
+from slack_clone import app
+from slack_clone import models
+from slack_clone.database import Base, engine, session
 
 class TestAPI(unittest.TestCase):
     """ Tests for the tuneful API """

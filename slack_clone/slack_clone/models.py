@@ -14,8 +14,8 @@ class User(Base, UserMixin):
     id = Column(Integer, primary_key=True)
     email = Column(String(128), unique=True)
     name = Column(String(128))
-    password = Column(String(128))
     display_name = Column(String(128))
+    password = Column(String(128))
 
     account_creation_date = Column(DateTime, default=datetime.datetime.utcnow)
     channels_subscribed = relationship("Channel", backref="channel")
@@ -31,6 +31,7 @@ class File(Base):
     user_id = Column(Integer, ForeignKey('user.id'))
     channel_id = Column(Integer, ForeignKey('channel.id'))
     caption = Column(String(1024))
+
 
 class Channel(Base):
     __tablename__ = "channel"
