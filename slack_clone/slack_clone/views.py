@@ -7,6 +7,8 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 @app.route("/")
 def homepage():
+    if current_user.is_authenticated:
+        return redirect(url_for("chatroom"))
     return render_template("base.html")
 
 
@@ -20,10 +22,9 @@ def login():
             flash("incorrect username or password", "danger")
             return render_template("failure.html")
         login_user(user, remember=True)
-        return render_template("success.html")
+        return redirect(url_for("chatroom"))
     else:
         return render_template("login.html")
-
 
 @app.route("/logout")
 @login_required
@@ -61,10 +62,21 @@ def create_account():
         session.add(user)
         session.commit()
         login_user(user, remember=True)
-        return render_template("success.html")
+        return render_template("chatroom.html")
 
     else:
         return render_template("create_account.html")
+
+
+@app.route("/chat", method=["GET","POST"])
+@login_required
+def chatroom():
+    if request.method == "Post":
+        message = request.form["usermsg"]
+    else:
+        return render_template("chatroom.html")
+
+
 
 
 

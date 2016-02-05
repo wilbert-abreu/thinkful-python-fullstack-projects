@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$USER_HOME$/Desktop/coding/python/thinkful python/slack_clone/.idea/slack-clone.iml" filepath="$USER_HOME$/Desktop/coding/python/thinkful python/slack_clone/.idea/slack-clone.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/slack-clone.iml" filepath="$PROJECT_DIR$/.idea/slack-clone.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/slack_clone.iml" filepath="$PROJECT_DIR$/.idea/slack_clone.iml" />
     </modules>
   </component>
 </project>

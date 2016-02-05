@@ -42,4 +42,13 @@ class Channel(Base):
     created_date = Column(DateTime, default=datetime.datetime.utcnow)
 
 
+class Message(base):
+    __tablename__ = "message"
+
+    id = Column(Integer, primary_key=True)
+    channel_id = Column(Integer, ForeignKey('channel.id'))
+    sender_id = Column(Integer, ForeignKey('user.id'))
+    time_stamp = Column(DateTime, default=datetime.datetime.utcnow)
+    content = Column(String(1024))
+
 Base.metadata.create_all(engine)

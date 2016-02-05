@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>You logged in successfully!</h1>
+<!--<textfield-->
+<!--<form role="form" method="post">-->
+    <!--<div class="form-group">-->
+        <!--<input type="text" class="form-control" id="chat_box" name="chat_box"-->
+               <!--placeholder="" required>-->
+    <!--</div>-->
+    <!--<button type="submit" class="btn btn-primary">Send Message</button>-->
+<!--</form>-->
+
+
+<div id="wrapper">
+    <div id="menu">
+        <p class="welcome">Welcome, <b></b>{{ current_user['display_name']
+            }}</p>
+        <!--<p class="logout"><a id="exit" href="#">Exit Chat</a></p>-->
+        <div style="clear:both"></div>
+    </div>
+
+    <div id="chatbox"></div>
+
+    <form name="message" method="post">
+        <input name="usermsg" type="text" id="usermsg" size="63" />
+        <input name="submitmsg" type="submit"  id="submitmsg" value="Send"
+               class="btn btn-primary" />
+    </form>
+</div>
+
+
+
+{% endblock %}

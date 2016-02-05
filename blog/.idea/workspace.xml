@@ -6,17 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7aa40190-5f71-44c9-aa8e-128ca3b2b458" name="Default" comment="&quot;&quot;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../slack_clone/slack_clone/templates/base.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../slack_clone/slack_clone/static/index.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../slack_clone/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/run.py" afterPath="$PROJECT_DIR$/../slack_clone/run.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/slack_clone/__init__.py" afterPath="$PROJECT_DIR$/../slack_clone/slack_clone/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/slack_clone/config.py" afterPath="$PROJECT_DIR$/../slack_clone/slack_clone/config.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/slack_clone/models.py" afterPath="$PROJECT_DIR$/../slack_clone/slack_clone/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/slack_clone/views.py" afterPath="$PROJECT_DIR$/../slack_clone/slack_clone/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/tests/api_tests.py" afterPath="$PROJECT_DIR$/../slack_clone/tests/api_tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../tuneful/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../tuneful/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/slack_clone/templates/success.html" afterPath="$PROJECT_DIR$/../slack_clone/slack_clone/templates/success.html" />
     </list>
     <ignored path="blog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -437,8 +427,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="20" y="23" width="1652" height="557" extended-state="1" />
-    <editor active="true" />
+    <frame x="20" y="23" width="1652" height="557" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15193705" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
