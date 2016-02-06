@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9230d868-53ea-46ac-8b57-5466d9615db1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/realtime_chat/static/js/ui_components/Chat.js" afterPath="$PROJECT_DIR$/realtime_chat/static/js/ui_components/Chat.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../slack_clone/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/slack_clone/templates/base.html" afterPath="$PROJECT_DIR$/../slack_clone/slack_clone/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/slack_clone/templates/chatroom.html" afterPath="$PROJECT_DIR$/../slack_clone/slack_clone/templates/chatroom.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/slack_clone/views.py" afterPath="$PROJECT_DIR$/../slack_clone/slack_clone/views.py" />
     </list>
     <ignored path="tuneful.iws" />

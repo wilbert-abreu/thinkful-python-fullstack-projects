@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9230d868-53ea-46ac-8b57-5466d9615db1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../pusher_react_chat/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../pusher_react_chat/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../pusher_react_chat/realtime_chat/static/js/ui_components/Chat.js" afterPath="$PROJECT_DIR$/../pusher_react_chat/realtime_chat/static/js/ui_components/Chat.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slack_clone/templates/base.html" afterPath="$PROJECT_DIR$/slack_clone/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slack_clone/templates/chatroom.html" afterPath="$PROJECT_DIR$/slack_clone/templates/chatroom.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slack_clone/views.py" afterPath="$PROJECT_DIR$/slack_clone/views.py" />
     </list>
     <ignored path="tuneful.iws" />
@@ -62,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/slack_clone/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="44" column="13" selection-start-line="44" selection-start-column="6" selection-end-line="44" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.10818308">
+              <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -84,11 +79,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/slack_clone/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.34057972">
-              <caret line="80" column="16" selection-start-line="80" selection-start-column="16" selection-end-line="80" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
               <folding>
                 <element signature="e#0#68#0" expanded="true" />
               </folding>
@@ -169,16 +164,16 @@
         <option value="$PROJECT_DIR$/slack_clone/templates/success.html" />
         <option value="$PROJECT_DIR$/slack_clone/models.py" />
         <option value="$PROJECT_DIR$/slack_clone/templates/base.html" />
-        <option value="$PROJECT_DIR$/slack_clone/views.py" />
         <option value="$PROJECT_DIR$/slack_clone/templates/chatroom.html" />
+        <option value="$PROJECT_DIR$/slack_clone/views.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="295" />
-    <option name="y" value="283" />
+    <option name="x" value="-177" />
+    <option name="y" value="212" />
     <option name="width" value="1388" />
-    <option name="height" value="649" />
+    <option name="height" value="818" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -532,7 +527,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="295" y="283" width="1388" height="649" extended-state="0" />
+    <frame x="-177" y="212" width="1388" height="818" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19380404" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -929,24 +924,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/slack_clone/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="13" selection-start-line="44" selection-start-column="6" selection-end-line="44" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/slack_clone/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.6969695">
-          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/slack_clone/static/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -967,10 +944,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/slack_clone/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34057972">
-          <caret line="80" column="16" selection-start-line="80" selection-start-column="16" selection-end-line="80" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
           <folding>
             <element signature="e#0#68#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/slack_clone/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.6969695">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/slack_clone/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10818308">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -75,7 +75,7 @@ def create_account():
         return render_template("create_account.html")
 
 
-@app.route("/chat", method=["GET","POST"])
+@app.route("/chat", method=["GET", "POST"])
 @login_required
 def chatroom():
     if request.method == "Post":
