@@ -1,8 +1,15 @@
 from flask import render_template, flash, request, redirect, url_for
 from slack_clone import app
-from .models import session, User, File, Channel
+from .models import session, User, File, Channel, Message
 from flask_login import login_required, current_user, login_user, logout_user
 from werkzeug.security import check_password_hash, generate_password_hash
+from pusher import Pusher
+
+pusher = Pusher(
+  app_id='173573',
+  key='b568462b35424532aa89',
+  secret='37566de4aecc1f1b312c'
+)
 
 
 @app.route("/")
@@ -72,11 +79,12 @@ def create_account():
 @login_required
 def chatroom():
     if request.method == "Post":
-        message = request.form["usermsg"]
+        new_message = request.form["usermsg"]
+        message = Message(content=new_message)
+        session.add(message)
+        session.commit()
+        pusher.trigger('messages', 'new_message', {'message': message})
     else:
-        return render_template("chatroom.html")
-
-
-
-
-
+        messages = session.query(Message)
+        messages = messages.order_by(Message.datetime.asc())
+        return render_template("chatroom.html", messages=messages)

@@ -23,6 +23,8 @@ var Chat = React.createClass({
 
 });
 
+
+
 var WelcomeView = React.createClass({
 
   render: function() {

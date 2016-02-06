@@ -3,21 +3,42 @@
 {% block content %}
 
 <h1>You logged in successfully!</h1>
-<!--<textfield-->
-<!--<form role="form" method="post">-->
-    <!--<div class="form-group">-->
-        <!--<input type="text" class="form-control" id="chat_box" name="chat_box"-->
-               <!--placeholder="" required>-->
-    <!--</div>-->
-    <!--<button type="submit" class="btn btn-primary">Send Message</button>-->
-<!--</form>-->
 
+    <script>
+            var pusher = new Pusher('b568462b35424532aa89');
+
+            //subscribe to our notifications channel
+            var messagesChannel = pusher.subscribe('messages');
+
+            //do something with our new information
+            messagesChannel.bind('new_message', function(text){
+                // assign the notification's message to a <div></div>
+
+                var message_text = text.message;
+                $('div#chatbox').text(message_text);
+            });
+
+
+            var sendMessage = function(){
+
+
+                var text = $('input#usermsg').val();
+
+                // POST to our server
+                $.post('/chat', {message: text}).success(function(){
+                    console.log('Message sent!');
+                });
+            };
+
+            $('input#submitmsg').on('click', sendMessage);
+
+       </script>
 
 <div id="wrapper">
     <div id="menu">
         <p class="welcome">Welcome, <b></b>{{ current_user['display_name']
             }}</p>
-        <!--<p class="logout"><a id="exit" href="#">Exit Chat</a></p>-->
+
         <div style="clear:both"></div>
     </div>
 
