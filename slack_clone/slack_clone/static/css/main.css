@@ -15,7 +15,7 @@ input { font:12px arial; }
 
 #loginform { padding-top:18px; }
 
-    #loginform p { margin: 5px; }
+#loginform p { margin: 5px; }
 
 #chatbox {
     text-align:left;
@@ -34,7 +34,7 @@ input { font:12px arial; }
     height: 30px;
     border:1px solid #ACD8F0; }
 
-#submit { width: 60px; }
+#submitmsg { width: 60px; }
 
 .error { color: #ff0000; }
 

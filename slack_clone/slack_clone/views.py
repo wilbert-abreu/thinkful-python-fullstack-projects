@@ -4,6 +4,8 @@ from .models import session, User, File, Channel, Message
 from flask_login import login_required, current_user, login_user, logout_user
 from werkzeug.security import check_password_hash, generate_password_hash
 from pusher import Pusher
+from . import decorators
+import datetime
 
 pusher = Pusher(
   app_id='173573',
@@ -75,16 +77,28 @@ def create_account():
         return render_template("create_account.html")
 
 
-@app.route("/chat", method=["GET", "POST"])
+@app.route("/chat", methods=["GET", "POST"])
+@decorators.accept("application/json")
 @login_required
 def chatroom():
-    if request.method == "Post":
-        new_message = request.form["usermsg"]
-        message = Message(content=new_message)
-        session.add(message)
-        session.commit()
-        pusher.trigger('messages', 'new_message', {'message': message})
+    if request.method == "POST":
+        message = request.form["message"]
+
+        username = current_user.display_name
+        time_stamp = str(datetime.datetime.utcnow())
+        print(username)
+        print(message)
+        print(time_stamp)
+        # message = Message(content=new_message, sender_id=current_user.id)
+        # session.add(message)
+        # session.commit()
+        pusher.trigger('messages', 'new_message', {
+            'message': message,
+            'username': username,
+            'time': time_stamp
+        })
+        return "great success!"
     else:
         messages = session.query(Message)
-        messages = messages.order_by(Message.datetime.asc())
+        messages = messages.order_by(Message.time_stamp.asc())
         return render_template("chatroom.html", messages=messages)

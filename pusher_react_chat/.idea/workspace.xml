@@ -2,6 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9230d868-53ea-46ac-8b57-5466d9615db1" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../slack_clone/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/run.py" afterPath="$PROJECT_DIR$/../slack_clone/run.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/slack_clone/__init__.py" afterPath="$PROJECT_DIR$/../slack_clone/slack_clone/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/slack_clone/models.py" afterPath="$PROJECT_DIR$/../slack_clone/slack_clone/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/slack_clone/templates/chatroom.html" afterPath="$PROJECT_DIR$/../slack_clone/slack_clone/templates/chatroom.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/slack_clone/views.py" afterPath="$PROJECT_DIR$/../slack_clone/slack_clone/views.py" />
     </list>
     <ignored path="tuneful.iws" />
@@ -38,8 +44,8 @@
       <file leaf-file-name="Chat.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/realtime_chat/static/js/ui_components/Chat.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7536232">
-              <caret line="21" column="3" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.3768116">
+              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -319,8 +325,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="480" y="397" width="1185" height="649" extended-state="1" />
-    <editor active="true" />
+    <frame x="480" y="397" width="1185" height="649" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13599458" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -378,6 +384,16 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/realtime_chat/api.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/realtime_chat/api.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -725,8 +741,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/realtime_chat/static/js/ui_components/Chat.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7536232">
-          <caret line="21" column="3" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.3768116">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -1,7 +1,8 @@
 import os.path
 import datetime
 from flask import url_for
-from sqlalchemy import Column, Integer, String, Sequence, ForeignKey, DateTime
+from sqlalchemy import Column, Integer, String, Sequence, ForeignKey, \
+    DateTime, Text
 from sqlalchemy.orm import relationship
 from slack_clone import app
 from .database import Base, engine, session
@@ -30,7 +31,7 @@ class File(Base):
     upload_date = Column(DateTime, default=datetime.datetime.utcnow)
     user_id = Column(Integer, ForeignKey('user.id'))
     channel_id = Column(Integer, ForeignKey('channel.id'))
-    caption = Column(String(1024))
+    caption = Column(Text(1024))
 
 
 class Channel(Base):
@@ -42,13 +43,13 @@ class Channel(Base):
     created_date = Column(DateTime, default=datetime.datetime.utcnow)
 
 
-class Message(base):
+class Message(Base):
     __tablename__ = "message"
 
     id = Column(Integer, primary_key=True)
     channel_id = Column(Integer, ForeignKey('channel.id'))
     sender_id = Column(Integer, ForeignKey('user.id'))
     time_stamp = Column(DateTime, default=datetime.datetime.utcnow)
-    content = Column(String(1024))
+    content = Column(Text())
 
 Base.metadata.create_all(engine)
