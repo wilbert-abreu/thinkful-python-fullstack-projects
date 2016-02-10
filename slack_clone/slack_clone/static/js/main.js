@@ -17,9 +17,15 @@ $(function(){
                   $('input#usermsg').val("");
                   $.post('/chat', {'message': text}).success(function(){
                     console.log('Message sent!');
-
                 });
 
                 });
+
+        $('.channel-list').on("click". function(){
+            var channel_name = $('input#usermsg').val();
+            $(input#current-channel).val(channel_name)
+            $.get('/chat', {'channel_name': channel_name}).success(function(data){
+                    console.log(data.channel_name);
+        });
 
 });

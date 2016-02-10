@@ -17,7 +17,7 @@ pusher = Pusher(
 @app.route("/")
 def homepage():
     if current_user.is_authenticated:
-        return redirect(url_for("chatroom"))
+        return render_template("chatroom.html")
     return render_template("base.html")
 
 
@@ -83,22 +83,28 @@ def create_account():
 def chatroom():
     if request.method == "POST":
         message = request.form["message"]
-
+        channel_id = request.form["channel_id"]
         username = current_user.display_name
         time_stamp = str(datetime.datetime.utcnow())
         print(username)
         print(message)
         print(time_stamp)
-        # message = Message(content=new_message, sender_id=current_user.id)
-        # session.add(message)
+        print(channel_id)
+        # send_message = Message(content=message,sender_id=current_user.id,
+                               channel_id=channel_id)
+        # session.add(send_message)
         # session.commit()
         pusher.trigger('messages', 'new_message', {
             'message': message,
             'username': username,
-            'time': time_stamp
+            'time': time_stamp,
+            # 'Channel': channel
         })
         return "great success!"
     else:
-        messages = session.query(Message)
+        data = request.json
+        channel = session.query(Channel).filter_by(name=data[
+            'channel_name']).first()
+        messages = session.query(Message).filter_by(channel_id=channel.id)
         messages = messages.order_by(Message.time_stamp.asc())
-        return render_template("chatroom.html", messages=messages)
+        return json json
