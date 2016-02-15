@@ -45,3 +45,18 @@ input { font:12px arial; }
 .logout { float:right; }
 
 .msgln { margin:0 0 2px 0; }
+
+.glyphicon-plus{
+   font-size: 25px;
+   color: black;
+}
+
+.glyphicon-plus:hover {
+    background-color: lightblue;
+    padding: 3px;
+}
+
+.channel-list li:hover {
+    background-color: lightblue;
+    padding: 3px;
+}

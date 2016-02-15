@@ -1,28 +1,45 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="container-fluid">
+    <div class="row">
 
-<h1 xmlns="http://www.w3.org/1999/html">You logged in successfully!</h1>
+     <div class="col-md-4">
+        <h1>Channel List <a href="#"><span
+                class="glyphicon glyphicon-plus"
+                                aria-hidden="true"></span></a></h1>
+        <ul class="channel-list list-unstyled">
+            <li>General</li>
+            <li>Python</li>
+        </ul>
+     </div>
 
 
+      <div class="col-md-7 col-md-offset-1">
+        <input type="hidden" name="current-channel" id="current-channel"
+               value="General" />
+        <h1>&nbsp; &nbsp; &nbsp; # <span id="channel-name"></span></h1>
+        <div id="wrapper">
+            <div id="menu">
+                <p class="welcome">Welcome, <b></b>{{ current_user['display_name']
+                    }}</p>
 
-<div id="wrapper">
-    <div id="menu">
-        <p class="welcome">Welcome, <b></b>{{ current_user['display_name']
-            }}</p>
+                <div style="clear:both"></div>
+            </div>
 
-        <div style="clear:both"></div>
-    </div>
+            <div id="chatbox"></div>
 
-    <div id="chatbox"></div>
+            <div id="messageForm">
+                <input name="usermsg" type="text" id="usermsg" size="63" />
+                <button name="submitmsg"  id="submitmsg"
+                       class="btn btn-primary" >Send</button>
+            </div>
+        </div>
 
-    <div id="messageForm">
-        <input name="usermsg" type="text" id="usermsg" size="63" />
-        <button name="submitmsg"  id="submitmsg"
-               class="btn btn-primary" >Send</button>
+      </div>
+
     </div>
 </div>
-
 
 
 {% endblock %}

@@ -52,4 +52,17 @@ class Message(Base):
     time_stamp = Column(DateTime, default=datetime.datetime.utcnow)
     content = Column(Text())
 
+    def as_dictionary(self):
+        user = session.query(User).filter_by(id=self.sender_id).first()
+        channel = session.query(Channel).filter_by(
+                id=self.channel_id).first()
+        messages = {
+            "id": self.id,
+            "channel_name": channel.name,
+            "display_name": user.display_name,
+            "time_stamp": str(self.time_stamp),
+            "content": self.content
+        }
+        return messages
+
 Base.metadata.create_all(engine)

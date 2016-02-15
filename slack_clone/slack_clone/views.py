@@ -1,4 +1,4 @@
-from flask import render_template, flash, request, redirect, url_for
+from flask import render_template, flash, request, Response, redirect, url_for
 from slack_clone import app
 from .models import session, User, File, Channel, Message
 from flask_login import login_required, current_user, login_user, logout_user
@@ -6,6 +6,8 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from pusher import Pusher
 from . import decorators
 import datetime
+import json
+
 
 pusher = Pusher(
   app_id='173573',
@@ -31,15 +33,16 @@ def login():
             flash("incorrect username or password", "danger")
             return render_template("failure.html")
         login_user(user, remember=True)
-        return redirect(url_for("chatroom"))
+        return rerender_template("chatroom.html")
     else:
         return render_template("login.html")
+
 
 @app.route("/logout")
 @login_required
 def logout():
     logout_user()
-    return render_template("login.html")
+    return redirect(url_for('homepage'))
 
 
 @app.route("/create-account", methods=["GET", "POST"])
@@ -77,34 +80,35 @@ def create_account():
         return render_template("create_account.html")
 
 
-@app.route("/chat", methods=["GET", "POST"])
+@app.route("/messages", methods=["GET", "POST"])
 @decorators.accept("application/json")
 @login_required
 def chatroom():
     if request.method == "POST":
         message = request.form["message"]
-        channel_id = request.form["channel_id"]
+        channel_name = request.form["current-channel"]
         username = current_user.display_name
         time_stamp = str(datetime.datetime.utcnow())
-        print(username)
-        print(message)
-        print(time_stamp)
-        print(channel_id)
-        # send_message = Message(content=message,sender_id=current_user.id,
-                               channel_id=channel_id)
-        # session.add(send_message)
-        # session.commit()
         pusher.trigger('messages', 'new_message', {
             'message': message,
             'username': username,
-            'time': time_stamp,
-            # 'Channel': channel
+            'time': time_stamp
         })
+        current_channel = session.query(Channel).filter_by(
+            name=channel_name).first()
+        send_message = Message(content=message,sender_id=current_user.id,
+                               channel_id=current_channel.id)
+        session.add(send_message)
+        session.commit()
         return "great success!"
     else:
-        data = request.json
-        channel = session.query(Channel).filter_by(name=data[
-            'channel_name']).first()
+        channel_name = request.args.get("channel_name")
+        channel = session.query(Channel).filter_by(name=channel_name).first()
         messages = session.query(Message).filter_by(channel_id=channel.id)
         messages = messages.order_by(Message.time_stamp.asc())
-        return json json
+        data = json.dumps([message.as_dictionary() for message in messages])
+        return Response(data, 200, mimetype="application/json")
+
+
+
+
