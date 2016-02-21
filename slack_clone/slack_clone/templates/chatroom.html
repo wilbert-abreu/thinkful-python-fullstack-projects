@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container-fluid">
+
     <div class="row">
 
-     <div class="col-md-4">
-        <h1>Channel List <a href="#"><span
+     <div class="col-md-3 channel-section">
+        <h1 class="channel-header">Channel List <a href="#"><span
                 class="glyphicon glyphicon-plus"
                                 aria-hidden="true"></span></a></h1>
         <ul class="channel-list list-unstyled">
@@ -15,31 +15,30 @@
      </div>
 
 
-      <div class="col-md-7 col-md-offset-1">
+      <div class="col-md-7 chat-section">
         <input type="hidden" name="current-channel" id="current-channel"
                value="General" />
-        <h1>&nbsp; &nbsp; &nbsp; # <span id="channel-name"></span></h1>
-        <div id="wrapper">
-            <div id="menu">
-                <p class="welcome">Welcome, <b></b>{{ current_user['display_name']
-                    }}</p>
-
-                <div style="clear:both"></div>
-            </div>
-
+        <div class="channel-display">
+        	<h1>&nbsp; &nbsp; &nbsp; # <span id="channel-name"></span></h1>
+        	<p id="welcome">Welcome, <b></b>{{ current_user['display_name'] }}</p>
+        </div>
+        
+        <div class="chat-wrapper">
             <div id="chatbox"></div>
 
-            <div id="messageForm">
-                <input name="usermsg" type="text" id="usermsg" size="63" />
+            <form id="messageForm" class="form-inline">
+               <div class="form-group"> 
+                	<input class="form-control" name="usermsg" type="text" id="usermsg" size="63" placeholder="Your Message"/>
+                </div> 
                 <button name="submitmsg"  id="submitmsg"
                        class="btn btn-primary" >Send</button>
-            </div>
+            </form>
         </div>
 
       </div>
 
     </div>
-</div>
+
 
 
 {% endblock %}

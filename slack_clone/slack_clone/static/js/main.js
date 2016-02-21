@@ -5,8 +5,8 @@ $(function(){
             messagesChannel.bind('new_message', function(data){
                 var username =  data.username;
                 var time_stamp = data.time;
-                var message_text = username + " " + data.message + " " +
-                time_stamp + "<br>";
+                var message_text = "<div class='message'><span class='username'>" + username + "</span> <span class='timestamp>'" + time_stamp + "</span><br><span class='message-text'>" +
+                data.message + "</span></div>";
                 $('div#chatbox').append(message_text);
             });
 
@@ -47,8 +47,11 @@ $(function(){
                 $.each(data, function(key, value) {
                     var username =  data[key].display_name;
                     var time_stamp = data[key].time_stamp;
-                    var message_text = username + " " + data[key].content + " " +
-                    time_stamp + "<br>";
+                    
+									var message_text = "<div class='message'><span class='username'>" + username + "</span> <span class='timestamp'>" + time_stamp + "</span><br><span class='message-text'>" +
+                data[key].content + "</span></div>";
+									
+									
                     $('div#chatbox').append(message_text);
                 });
             });

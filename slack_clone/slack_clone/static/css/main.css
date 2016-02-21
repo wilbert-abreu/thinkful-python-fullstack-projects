@@ -1,62 +1,103 @@
-/* CSS Document */
+.channel-section {
+    position: absolute;
+		width: 20%; 
+	 height: 80%;
+	 background-color: #4D394B;
+	color:white;
+}
 
-
-
-
-input { font:12px arial; }
-
-
-#wrapper, #loginform {
-    margin:0 auto;
-    padding-bottom:25px;
-    background:#EBF4FB;
-    width:504px;
-    border:1px solid #ACD8F0; }
-
-#loginform { padding-top:18px; }
-
-#loginform p { margin: 5px; }
-
-#chatbox {
-    text-align:left;
-    margin:0 auto;
-    margin-bottom:25px;
-    padding:10px;
-    background:#fff;
-    height:270px;
-    width:430px;
-    border:1px solid #ACD8F0;
-    overflow:auto; }
-
-#usermsg {
-    margin-left: 30px;
-    width:395px;
-    height: 30px;
-    border:1px solid #ACD8F0; }
-
-#submitmsg { width: 60px; }
-
-.error { color: #ff0000; }
-
-#menu { padding:12.5px 25px 12.5px 25px; }
-
-.welcome { float:left; }
-
-.logout { float:right; }
-
-.msgln { margin:0 0 2px 0; }
+.channel-header {
+	
+}
 
 .glyphicon-plus{
-   font-size: 25px;
-   color: black;
+	color: white;
+	font-size:25px;
+}
+
+.channel-list li{
+	padding-top: 10px;
+	font-size: 16px;
+	
 }
 
 .glyphicon-plus:hover {
-    background-color: lightblue;
-    padding: 3px;
+    background-color: rgba(0,0,0,0.3);
 }
 
 .channel-list li:hover {
-    background-color: lightblue;
-    padding: 3px;
+    background-color: rgba(0,0,0,0.3);
+	  width: 100%
+}
+
+.chat-section {
+	position:relative;
+	left: 25%;
+	width: 75%;
+ 	height:80%;
+	background-color: white;
+	 border:1px solid lightgrey;
+}
+
+.channel-display{
+	color: #555459;
+	
+}
+
+.channel-display #welcome {
+	padding-left: 25px;
+	
+}
+
+.chat-wrapper {
+
+	position:absolute;
+	right: 0;
+	bottom: 0;
+	height: 85%;
+	width: 100%;
+	border-top:1px solid lightgrey;	
+  
+}
+
+#chatbox {
+	background-color: white;
+  height: 95%;
+	overflow-y: scroll;
+ padding: 40px;
+
+}
+
+.Message{
+	
+	padding-bottom:15px;
+}
+
+.username {
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.timestamp {
+	color: darkgrey;
+	font-size: 12px;
+	
+}
+
+#messageForm {
+	position: relative;
+
+}
+
+#messageForm #usermsg {
+	position: absolute;
+	width: 88.5%;
+	border:1px solid lightgrey;
+	outline:none;
+}
+
+#messageForm #submitmsg {
+	position: absolute;
+	right: 0;
+	width: 100px;
 }

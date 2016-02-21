@@ -33,7 +33,7 @@ def login():
             flash("incorrect username or password", "danger")
             return render_template("failure.html")
         login_user(user, remember=True)
-        return rerender_template("chatroom.html")
+        return render_template("chatroom.html")
     else:
         return render_template("login.html")
 
