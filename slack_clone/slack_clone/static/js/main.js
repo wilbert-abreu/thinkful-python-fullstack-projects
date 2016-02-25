@@ -5,8 +5,7 @@ $(function(){
             messagesChannel.bind('new_message', function(data){
                 var username =  data.username;
                 var time_stamp = data.time;
-                var message_text = "<div class='message'><span class='username'>" + username + "</span> <span class='timestamp'>" + time_stamp + "</span><br><span class='message-text'>" +
-                data.message + "</span></div>";
+                var message_text = "<div class='message'><a href='#' class='message_profile-pic'></a><a href='#' class='message_username'>" + username + "</a><span class='timestamp'>" + time_stamp + "</span><span class='message-text'>" + data.message + "</span></div>";
                 $('div#chatbox').append(message_text);
 							 	
             });
@@ -52,8 +51,7 @@ $(function(){
                     var time_stamp = data[key].time_stamp;
                     time_stamp = Date.parse(time_stamp);
                     time_stamp = time_stamp.toString('h:mm tt MM/yy');
-					var message_text = "<div class='message'><span class='username'>" + username + "</span> <span class='timestamp'>" + time_stamp + "</span><br><span class='message-text'>" +
-                data[key].content + "</span></div>";
+					var message_text = "<div class='message'><a href='#' class='message_profile-pic'></a><a href='#' class='message_username'>" + username + "</a><span class='timestamp'>" + time_stamp + "</span><span class='message-text'>" + data[key].content + "</span></div>";
 									
 									
                     $('div#chatbox').append(message_text);

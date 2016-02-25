@@ -101,3 +101,95 @@
 	right: 0;
 	width: 100px;
 }
+
+.message {
+
+  position: relative;
+
+  margin-top: .5rem;
+
+  padding: .25rem 2rem .1rem 3rem;
+
+  min-height: 36px;
+
+}
+
+.message_profile-pic {
+
+  position: absolute;
+
+  left: 0;
+
+  display: block;
+
+  -moz-border-radius: 0.2rem;
+
+  -webkit-border-radius: 0.2rem;
+
+  border-radius: 0.2rem;
+
+  width: 36px;
+
+  height: 36px;
+
+  background-image: url("http://i.imgur.com/LikUNLc.png");
+
+  background-size: cover;
+
+}
+
+.username{
+
+  font-weight: 900;
+
+  padding-right: .25rem;
+
+  color: #3d3c40 !important;
+
+  margin-left: 0;
+
+  font-style: normal;
+
+  text-decoration: none;
+
+}
+
+
+.timestamp {
+
+  text-align: left;
+
+  display: inline;
+
+  position: relative;
+
+  top: 0;
+
+  left: 0;
+
+  color: #babbbf;
+
+  font-size: 12px;
+
+  line-height: 1.2rem;
+
+  width: 36px;
+
+  margin-right: 0;
+
+  margin-left: 0;
+
+}
+
+
+.message-text{
+
+  color: #8b898f;
+
+  font-style: italic;
+
+  display: block;
+
+  min-height: 1rem;
+
+}
