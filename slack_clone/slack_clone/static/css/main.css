@@ -68,21 +68,7 @@
 
 }
 
-.Message{
-	
-	padding-bottom:15px;
-}
 
-.username {
-	font-weight: bold;
-	font-size: 12px;
-}
-
-.timestamp {
-	color: darkgrey;
-	font-size: 12px;
-	
-}
 
 #messageForm {
 	position: relative;
