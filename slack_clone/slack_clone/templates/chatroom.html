@@ -5,13 +5,10 @@
     <div class="row">
 
      <div class="col-md-3 channel-section">
-        <h1 class="channel-header">Channel List <a href="#"><span
+        <h1 class="channel-header">Channel List <a href="{{url_for('create_channel')}}"><span
                 class="glyphicon glyphicon-plus"
                                 aria-hidden="true"></span></a></h1>
-        <ul class="channel-list list-unstyled">
-            <li>General</li>
-            <li>Python</li>
-        </ul>
+        <ul class="channel-list list-unstyled"></ul>
      </div>
 
 
@@ -31,14 +28,13 @@
                 	<input class="form-control" name="usermsg" type="text" id="usermsg" size="63" placeholder="Your Message"/>
                 </div> 
                 <button name="submitmsg"  id="submitmsg"
-                       class="btn btn-primary" >Send</button>
+                       class="btn btn-primary">Send</button>
             </form>
         </div>
 
       </div>
 
     </div>
-
 
 
 {% endblock %}

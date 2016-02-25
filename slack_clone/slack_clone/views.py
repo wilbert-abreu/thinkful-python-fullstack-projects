@@ -88,7 +88,10 @@ def chatroom():
         message = request.form["message"]
         channel_name = request.form["current-channel"]
         username = current_user.display_name
-        time_stamp = str(datetime.datetime.utcnow())
+        time_stamp = datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
+        if message.strip() == '':
+            flash("Please fill in a message before sending", "danger")
+            return "Failed"
         pusher.trigger('messages', 'new_message', {
             'message': message,
             'username': username,
@@ -96,7 +99,7 @@ def chatroom():
         })
         current_channel = session.query(Channel).filter_by(
             name=channel_name).first()
-        send_message = Message(content=message,sender_id=current_user.id,
+        send_message = Message(content=message, sender_id=current_user.id,
                                channel_id=current_channel.id)
         session.add(send_message)
         session.commit()
@@ -108,6 +111,38 @@ def chatroom():
         messages = messages.order_by(Message.time_stamp.asc())
         data = json.dumps([message.as_dictionary() for message in messages])
         return Response(data, 200, mimetype="application/json")
+
+
+@app.route("/create-channel", methods=["GET", "POST"])
+def create_channel():
+    if request.method == "POST":
+        channel_name = request.form["channel-name"]
+
+        if session.query(Channel).filter_by(name=channel_name).first():
+            flash ("There is already a channel with that name",
+                   "danger")
+            return redirect(url_for("create_channel"))
+
+        while len(channel_name) < 4:
+            flash("Please make the channel name at least 3 charecters long",
+                  "danger")
+            return redirect(url_for("create_channel"))
+
+        channel = Channel(name=channel_name, creator_id=current_user.id)
+
+        session.add(channel)
+        session.commit()
+        return render_template("chatroom.html")
+    else:
+        return render_template("create_channel.html")
+
+
+@app.route("/channel-list", methods=["GET"])
+def channel_list():
+    channels = session.query(Channel).order_by(Channel.created_date.asc()).all()
+    data = json.dumps([channel.as_dictionary() for channel in channels])
+    return Response(data, 200, mimetype="application/json")
+
 
 
 

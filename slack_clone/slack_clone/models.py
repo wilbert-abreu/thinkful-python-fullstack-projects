@@ -42,6 +42,12 @@ class Channel(Base):
     creator_id = Column(Integer, ForeignKey('user.id'))
     created_date = Column(DateTime, default=datetime.datetime.utcnow)
 
+    def as_dictionary(self):
+        channels = {
+            "channel_name": self.name,
+        }
+        return channels
+
 
 class Message(Base):
     __tablename__ = "message"
@@ -60,7 +66,7 @@ class Message(Base):
             "id": self.id,
             "channel_name": channel.name,
             "display_name": user.display_name,
-            "time_stamp": str(self.time_stamp),
+            "time_stamp": self.time_stamp.strftime("%Y-%m-%d %H:%M:%S"),
             "content": self.content
         }
         return messages
