@@ -5,27 +5,30 @@ $(function(){
             messagesChannel.bind('new_message', function(data){
                 var username =  data.username;
                 var time_stamp = data.time;
-                var message_text = "<div class='message'></a><a href='#' class='message_username'>" + username + "</a><span class='timestamp'>" + time_stamp + "</span><span class='message-text'>" + data.message + "</span></div>";
+                time_stamp  = moment.utc(time_stamp).toDate();
+                time_stamp = moment(time_stamp).format('h:mm A');
+                var message_text = "<div class='message'><a href='#' class='message_profile-pic'></a><a href='#' class='message_username'>" + username + "</a><span class='timestamp'>" + time_stamp + "</span><span class='message-text'>" + data.message + "</span></div>";
                 $('div#chatbox').append(message_text);
-//				<a href='#' class='message_profile-pic'>
+//
             });
 
        $('#submitmsg').on('click', function () {
                   var text = $('input#usermsg').val();
-                  $('input#usermsg').val("");
+                  $('input#usermsg').val('');
                   var channel = $('input#current-channel').val();
                   $.post('/messages', {'message': text,'current-channel':channel }).success
                   (function(){
                     console.log('Message sent!');
+                      scrollToBottom();
                 });
 				 				
                 });
 
-        $('.channel-list').on("click",'li span', function(){
-            var channel_name = $(this).text();
+        $('.channel-list').on("click",'li', function(){
+            var channel_name = $(this).find('span').text();
             $('#channel-name').text(channel_name);
-            $("input#current-channel").val(channel_name);
-             $('div#chatbox').html("");
+            $('input#current-channel').val(channel_name);
+             $('div#chatbox').html('');
             getMessages();
 						
         });
@@ -49,31 +52,30 @@ $(function(){
                 $.each(data, function(key, value) {
                     var username =  data[key].display_name;
                     var time_stamp = data[key].time_stamp;
-                    time_stamp = Date.parse(time_stamp);
-                    time_stamp = time_stamp.toString('h:mm tt MM/yy');
-					var message_text = "<div class='message'></a><a href='#' class='message_username'>" + username + "</a><span class='timestamp'>" + time_stamp + "</span><span class='message-text'>" + data[key].content + "</span></div>";
-									
-//								<a href='#' class='message_profile-pic'>
+                    if (key === 0) {
+                        console.log(data[key].time_stamp);
+                    }else {
+                         console.log(data[key-1].time_stamp);
+                    };
+
+                    var time_stamp  = moment.utc(time_stamp).toDate();
+                    time_stamp = moment(time_stamp).format('h:mm A');
+                    //time_stamp = Date.parse(time_stamp);
+                    ////time_stamp = time_stamp.toString('h:mm tt MM/yy');
+                    //time_stamp = time_stamp.toString('h:mm tt');
+					var message_text = "<div class='message'><a href='#' class='message_profile-pic'></a><a href='#' class='message_username'>" + username + "</a><span class='timestamp'>" + time_stamp + "</span><span class='message-text'>" + data[key].content + "</span></div>";
                     $('div#chatbox').append(message_text);
 									
                 });
-							
-							scrollToBottom();
+                scrollToBottom();
             });
-			
-				 
     };
-
     getMessages();
 	getChannels();
 
-		function scrollToBottom() {
-				$('div#chatbox').scrollTop($('div#chatbox')[0].scrollHeight);
-		};
-	
-		$('.chat-wrapper').on('contentchanged', 'div #chatbox', function() {
-  		scrollToBottom();
-		});
-	
-	
+    function scrollToBottom() {
+        $('div#chatbox').scrollTop($('div#chatbox')[0].scrollHeight);
+    };
+    $('.chat-wrapper').on('contentchanged', 'div #chatbox', function() {scrollToBottom();
+    });
 });

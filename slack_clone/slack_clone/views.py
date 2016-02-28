@@ -60,7 +60,7 @@ def create_account():
             return redirect(url_for("create_account"))
 
         while len(password) < 8:
-            flash("Please make the password at least 8 charecters long",
+            flash("Please make the password at least 8 characters long",
                   "danger")
             return redirect(url_for("create_account"))
 
@@ -68,7 +68,7 @@ def create_account():
             flash("Passwords do not match", "danger")
             return redirect(url_for("create_account"))
 
-        user = User(name=name,email=email,display_name=display_name,
+        user = User(name=name, email=email, display_name=display_name,
                     password=generate_password_hash(password))
 
         session.add(user)
@@ -103,7 +103,7 @@ def chatroom():
                                channel_id=current_channel.id)
         session.add(send_message)
         session.commit()
-        return "great success!"
+        return Response(status=204)
     else:
         channel_name = request.args.get("channel_name")
         channel = session.query(Channel).filter_by(name=channel_name).first()
@@ -132,7 +132,7 @@ def create_channel():
 
         session.add(channel)
         session.commit()
-        return render_template("chatroom.html")
+        return redirect(url_for('homepage'))
     else:
         return render_template("create_channel.html")
 
