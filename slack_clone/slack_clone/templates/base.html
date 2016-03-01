@@ -20,6 +20,8 @@
         <!-- Fonts -->
         <!-- Font Awesome -->
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+        <link href='http://fonts.googleapis.com/css?family=Rancho' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Gudea' rel='stylesheet' type='text/css'>
 
         <!-- JS -->
         <!-- jQuery -->
@@ -55,9 +57,10 @@
                       {% if current_user.is_authenticated %}
                         <a href="{{url_for('logout')}}" class="btn btn-primary navbar-btn">Logout</a>
                       {% else %}
-                        <a href="{{url_for('login')}}" class="btn btn-primary navbar-btn">Login</a>
+                        <a href="{{url_for('login')}}"
+                           class="btn btn-primary navbar-btn"><i
+                                class="fa fa-arrow-right"></i>&nbsp;&nbsp;Login</a>
                       {% endif %}
-
                     </ul>
                 </div>
             </div>

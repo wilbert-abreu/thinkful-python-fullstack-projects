@@ -16,11 +16,11 @@
         <input type="hidden" name="current-channel" id="current-channel"
                value="General" />
         <div class="channel-display">
-        	<h1>&nbsp; &nbsp; &nbsp; # <span id="channel-name"></span></h1>
+        	<h1> # <span id="channel-name"></span></h1>
         	<p id="welcome">Welcome, <b></b>{{ current_user['display_name'] }}</p>
         </div>
-        
         <div class="chat-wrapper">
+            <div id="sticky-anchor"></div>
             <div id="chatbox"></div>
 
             <form id="messageForm" class="form-inline" target="dummyframe">
@@ -28,7 +28,8 @@
                 	<input class="form-control" name="usermsg" type="text" id="usermsg" size="63" placeholder="Your Message"/>
                 </div> 
                 <button name="submitmsg"  id="submitmsg"
-                       class="btn btn-primary">Send</button>
+                       class="btn btn-primary"><i
+                                class="fa fa-arrow-right"></i>&nbsp;&nbsp;Send</button>
             </form>
         </div>
 

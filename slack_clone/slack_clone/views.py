@@ -124,7 +124,7 @@ def create_channel():
             return redirect(url_for("create_channel"))
 
         while len(channel_name) < 4:
-            flash("Please make the channel name at least 3 charecters long",
+            flash("Please make the channel name at least 3 characters long",
                   "danger")
             return redirect(url_for("create_channel"))
 
@@ -142,6 +142,18 @@ def channel_list():
     channels = session.query(Channel).order_by(Channel.created_date.asc()).all()
     data = json.dumps([channel.as_dictionary() for channel in channels])
     return Response(data, 200, mimetype="application/json")
+
+
+@app.route("/delete-channel", methods=["POST"])
+def delete_channel():
+    if request.method == "POST":
+        channel_name = request.form["current-channel"]
+        channel = session.query(Channel).filter_by(name=channel_name).first()
+        messages = session.query(Message).filter_by(channel_id=channel.id)
+        session.delete(channel)
+        session.delete(messages)
+        session.commit()
+        return Response(status=204)
 
 
 

@@ -7,18 +7,19 @@
 }
 
 .channel-header {
-	
+	font-family: Verdana, Helvetica, sans-serif;
 }
 
-.glyphicon-plus{
+.glyphicon-plus {
 	color: white;
 	font-size:25px;
 }
 
-.channel-list li{
+.channel-list li {
 	padding-top: 10px;
 	font-size: 16px;
-	
+    font-family: Verdana, Helvetica, sans-serif;
+
 }
 
 .glyphicon-plus:hover {
@@ -30,6 +31,13 @@
 	  width: 100%
 }
 
+.glyphicon-remove-sign{
+    color: red;
+    float:right;
+    margin-right:21px;
+    display:none;
+}
+
 .chat-section {
 	position:relative;
 	left: 25%;
@@ -39,33 +47,32 @@
 	 border:1px solid lightgrey;
 }
 
-.channel-display{
+.channel-display h1 {
 	color: #555459;
-	
+    font-family: 'Rancho', Georgia, serif;;
+    padding-left: 25px;
 }
 
 .channel-display #welcome {
 	padding-left: 25px;
-	
+    font-family: Verdana, Helvetica, sans-serif;
 }
 
 .chat-wrapper {
-
 	position:absolute;
 	right: 0;
 	bottom: 0;
 	height: 85%;
 	width: 100%;
-	border-top:1px solid lightgrey;	
-  
+	border-top:1px solid lightgrey;
 }
 
 #chatbox {
 	background-color: white;
-  height: 95%;
+    height: 95%;
 	overflow-y: scroll;
- padding: 40px;
-
+    padding: 40px;
+    font-family: Verdana, Helvetica, sans-serif;
 }
 
 
@@ -111,7 +118,7 @@
 
 }
 
-.username, .message_username{
+.username, .message_username {
     font-weight: 900;
     padding-right: .75rem;
     padding-left: 1.25rem;
@@ -137,10 +144,51 @@
     margin-left: 0;
 }
 
-.message-text{
+.message-text {
     color: #8b898f;
     font-style: italic;
     display: block;
     min-height: 1rem;
     padding-left: 1.25rem;
 }
+
+/* begin day divider*/
+.day_divider {
+    background:#fff;
+    margin:1.2rem 0;
+    padding:0;
+    font-size:1.3rem;
+    line-height:1rem;
+    font-family: Verdana, Helvetica, sans-serif;
+    color:#2c2d30;
+    font-weight:600;
+    text-align:center;
+    cursor:default;
+    clear:both;
+    position:relative;
+}
+
+.day_divider hr {
+    position:absolute;
+    border-top:1px solid #e8e8e8;
+    top:.75rem;
+    right:0;
+    left:0;
+    margin:0;
+}
+
+.day_divider .day_divider_label {
+    background:#fff;
+    padding:.25rem .75rem;
+    display:inline-block;
+    margin:0 auto;
+    position:relative;
+    border-radius:.25rem
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+  }
+
+/* end day divider*/
