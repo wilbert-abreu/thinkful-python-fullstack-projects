@@ -114,6 +114,7 @@ def chatroom():
 
 
 @app.route("/create-channel", methods=["GET", "POST"])
+@login_required
 def create_channel():
     if request.method == "POST":
         channel_name = request.form["channel-name"]
@@ -132,28 +133,34 @@ def create_channel():
 
         session.add(channel)
         session.commit()
+        pusher.trigger('channels', 'new_channel', {
+            'channel_name': channel.name
+        })
         return redirect(url_for('homepage'))
     else:
         return render_template("create_channel.html")
 
 
-@app.route("/channel-list", methods=["GET"])
+@app.route("/channel", methods=["GET"])
+@login_required
 def channel_list():
     channels = session.query(Channel).order_by(Channel.created_date.asc()).all()
     data = json.dumps([channel.as_dictionary() for channel in channels])
     return Response(data, 200, mimetype="application/json")
 
 
-@app.route("/delete-channel", methods=["POST"])
+@app.route("/channel", methods=["DELETE"])
+@login_required
 def delete_channel():
-    if request.method == "POST":
-        channel_name = request.form["current-channel"]
-        channel = session.query(Channel).filter_by(name=channel_name).first()
-        messages = session.query(Message).filter_by(channel_id=channel.id)
-        session.delete(channel)
-        session.delete(messages)
-        session.commit()
-        return Response(status=204)
+    channel_name = request.form["current-channel"]
+    channel = session.query(Channel).filter_by(name=channel_name).first()
+    session.query(Message).filter_by(channel_id=channel.id).delete()
+    session.delete(channel)
+    session.commit()
+    pusher.trigger('channels', 'delete_channel', {
+            'channel_name': channel.name
+        })
+    return Response(status=204)
 
 
 

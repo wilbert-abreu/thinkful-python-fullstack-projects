@@ -10,6 +10,25 @@ $(function(){
             $('div#chatbox').append(message_text);
         });
 
+        var Channel = pusher.subscribe('channels');
+
+        Channel.bind('new_channel', function(data){
+            console.log('realtime chanel update');
+            var channel_name =  data.channel_name;
+            var channel_text = buildChannel(channel_name);
+           $('.channel-list').append(channel_text);
+        });
+
+        Channel.bind('delete_channel', function(data){
+            var channel_name =  data.channel_name;
+           $('.channel-list li span').filter(function() {
+               return $.text([this]) === channel_name; }).parent().remove();
+        });
+
+
+
+
+
        $('#submitmsg').on('click', function () {
                   var text = $('input#usermsg').val();
                   $('input#usermsg').val('');
@@ -22,28 +41,21 @@ $(function(){
        });
 
         $('.channel-list').on("click",'li', function(e) {
-
-            // Check if click was triggered on or within #menu_content
             if($(e.target).closest(".glyphicon-remove-sign").length > 0) {
-
-                return false;
-            }
-
+                return false;}
             var channel_name = $(this).find('span').text();
             $('#channel-name').text(channel_name);
             $('input#current-channel').val(channel_name);
              $('div#chatbox').html('');
             getMessages();
-						
         });
 
     function getChannels(){
-        $.get('/channel-list').success(function(data){
+        $.get('/channel').success(function(data){
                 $.each(data, function(key, value) {
                     var channel_name = data[key].channel_name;
-					var channel = "<li>#  <span>" + channel_name +
-					"</span><a><i class='glyphicon glyphicon-remove-sign'></i></a></li>";
-                    $('.channel-list').append(channel);
+					var channel_text = buildChannel(channel_name);
+                    $('.channel-list').append(channel_text);
                 });
             });
     }
@@ -101,17 +113,32 @@ $(function(){
         return message_text;
     };
 
+    function buildChannel(channel_name) {
+        var channel_text = "<li>#  <span>" + channel_name +
+					"</span><a><i class='glyphicon glyphicon-remove-sign'></i></a></li>";
+        return channel_text;
+    }
+
 
 
     $('.channel-list').on("click",'li .glyphicon-remove-sign', function(){
-        var channel_name = $(this).find('span').text();
+        var channel_name = $(this).closest('li').find('span').text();
+        console.log(channel_name);
         if (channel_name === $('input#current-channel').val()){
             $('input#current-channel').val('');
         };
-        console.log('Channel deleted');
-        $.post('/delete-channel', {'current-channel':channel_name }).success
+
+        $.ajax({
+            url: '/channel',
+            type: 'DELETE',
+            data: {'current-channel':channel_name }
+        }).done
             (function(){
-            console.log('Channel Deleted!');
+                $('.channel-list li span').filter(function() {
+               return $.text([this]) === channel_name; }).parent().remove();
+            }).fail
+            (function(){
+            console.log('Channel Not Deleted!');
             });
        });
 
