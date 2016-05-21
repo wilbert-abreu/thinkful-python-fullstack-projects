@@ -5,16 +5,7 @@
     <option name="CUSTOM_SCOPE_NAME" value="Open Files" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7aa40190-5f71-44c9-aa8e-128ca3b2b458" name="Default" comment="&quot;&quot;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../posts/posts/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../posts/posts/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../slack_clone/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/slack_clone/static/css/main.css" afterPath="$PROJECT_DIR$/../slack_clone/slack_clone/static/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/slack_clone/static/js/main.js" afterPath="$PROJECT_DIR$/../slack_clone/slack_clone/static/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/slack_clone/templates/base.html" afterPath="$PROJECT_DIR$/../slack_clone/slack_clone/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/slack_clone/templates/chatroom.html" afterPath="$PROJECT_DIR$/../slack_clone/slack_clone/templates/chatroom.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/slack_clone/templates/login.html" afterPath="$PROJECT_DIR$/../slack_clone/slack_clone/templates/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../slack_clone/slack_clone/views.py" afterPath="$PROJECT_DIR$/../slack_clone/slack_clone/views.py" />
-    </list>
+    <list default="true" id="7aa40190-5f71-44c9-aa8e-128ca3b2b458" name="Default" comment="&quot;&quot;" />
     <ignored path="blog.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />

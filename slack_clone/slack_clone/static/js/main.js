@@ -1,6 +1,7 @@
 $(function(){
         var pusher = new Pusher('b568462b35424532aa89');
         var messagesChannel = pusher.subscribe('messages');
+
         messagesChannel.bind('new_message', function(data){
             var username =  data.username;
             var time_stamp = data.time;
@@ -13,7 +14,7 @@ $(function(){
         var Channel = pusher.subscribe('channels');
 
         Channel.bind('new_channel', function(data){
-            console.log('realtime chanel update');
+            console.log('realtime channel update');
             var channel_name =  data.channel_name;
             var channel_text = buildChannel(channel_name);
            $('.channel-list').append(channel_text);
