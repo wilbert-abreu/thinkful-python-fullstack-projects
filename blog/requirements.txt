@@ -10,7 +10,7 @@ gnureadline==6.3.3
 ipython==3.0.0
 Jinja2==2.7.3
 jsonschema==2.4.0
-lxml==3.4.4
+lxml==4.6.2
 Mako==1.0.3
 MarkupSafe==0.23
 mistune==0.7.1
